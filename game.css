@@ -27,3 +27,25 @@
 .incorrect {
   background-color: red;
 }
+#hud {
+  display: flex;
+  justify-content: space-between;
+}
+.hud-prefix {
+  text-align: center;
+  font-size: 2rem;
+}
+.hud-main-text {
+  text-align: center;
+}
+#progress_Bar {
+  width: 20rem;
+  height: 4rem;
+  border: 0.4rem solid yellowgreen;
+  margin-top: 2.5rem;
+}
+#progressBarFull {
+  height: 3.4rem;
+  width: 0;
+  background-color: yellowgreen;
+}

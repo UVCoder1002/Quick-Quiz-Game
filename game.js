@@ -1,5 +1,8 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const ProgressText = document.getElementById("progressText");
+const scoreText = document.getElementById("score");
+const progressBarFull = document.getElementById("progressBarFull");
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -36,6 +39,7 @@ let questions = [
 console.log(questions);
 //CONSTANTS
 const CORRECT_BONUS = 4;
+const NEGATIVE_MARKS = 1;
 const MAX_QUESTIONS = 3;
 
 startGame = () => {
@@ -51,6 +55,9 @@ getNewQuestion = () => {
     return window.location.assign("/end.html");
   }
   questionCounter++;
+  ProgressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
+  progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+
   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionIndex];
   question.innerText = currentQuestion.question;
@@ -76,6 +83,13 @@ choices.forEach((choice) => {
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
     selectedChoice.classList.add(classToApply);
+
+    if (classToApply == "correct") {
+      score = score + CORRECT_BONUS;
+    } else {
+      score = score - NEGATIVE_MARKS;
+    }
+    scoreText.innerText = score;
     setTimeout(() => {
       selectedChoice.classList.remove(classToApply);
       getNewQuestion();
