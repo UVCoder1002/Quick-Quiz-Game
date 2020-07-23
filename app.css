@@ -89,3 +89,18 @@ h3 {
   transform: none;
   transition: none;
 }
+/*FORM*/
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+input {
+  margin-bottom: 1rem;
+  width: 20rem;
+  padding: 1rem;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  border: none;
+  font-size: 1.8rem;
+}
