@@ -1,0 +1,27 @@
+[
+  {
+    "question": "Inside which HTML element do we put the JavaScript?",
+    "choices": ["<script>", "<javascript>"],
+    "choice1": "<script>",
+    "choice2": "<javascript>",
+    "choice3": "<js>",
+    "choice4": "<scripting>",
+    "answer": 1
+  },
+  {
+    "question": "Who invented computer?",
+    "choice1": "Bjarne",
+    "choice2": "Linus Torwald",
+    "choice3": "Charles Babbage",
+    "choice4": "James Gosling",
+    "answer": 3
+  },
+  {
+    "question": "Who invented C++ Language?",
+    "choice1": "Bjarne",
+    "choice2": "Linus Torwald",
+    "choice3": "Charles Babbage",
+    "choice4": "James Gosling",
+    "answer": 1
+  }
+]

@@ -10,37 +10,37 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let questions = [
-  {
-    question: "Inside which HTML element do we put the JavaScript?",
-    choice1: "<script>",
-    choice2: "<javascript>",
-    choice3: "<js>",
-    choice4: "<scripting>",
-    answer: 1,
-  },
-  {
-    question: "Who invented computer?",
-    choice1: "Bjarne",
-    choice2: "Linus Torwald",
-    choice3: "Charles Babbage",
-    choice4: "James Gosling",
-    answer: 3,
-  },
-  {
-    question: "Who invented C++ Language?",
-    choice1: "Bjarne",
-    choice2: "Linus Torwald",
-    choice3: "Charles Babbage",
-    choice4: "James Gosling",
-    answer: 1,
-  },
-];
+let questions = [];
+fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=medium")
+  .then((res) => {
+    return res.json();
+  })
+  .then((loadedQuestions) => {
+    console.log(loadedQuestions.results);
+    questions = loadedQuestions.results.map((loadedQuestion) => {
+      const formattedQuestion = {
+        question: loadedQuestion.question,
+      };
+      const answerChoice = [...loadedQuestion.incorrect_answers];
+      formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+      answerChoice.splice(
+        formattedQuestion.answer - 1,
+        0,
+        loadedQuestion.correct_answer
+      );
+
+      answerChoice.forEach((choice, index) => {
+        formattedQuestion["choice" + (index + 1)] = choice;
+      });
+      return formattedQuestion;
+    });
+    startGame();
+  });
 console.log(questions);
 //CONSTANTS
 const CORRECT_BONUS = 4;
 const NEGATIVE_MARKS = 1;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 10;
 
 startGame = () => {
   questionCounter = 0;
@@ -100,4 +100,3 @@ choices.forEach((choice) => {
     }, 500);
   });
 });
-startGame();
