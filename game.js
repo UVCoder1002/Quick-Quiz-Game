@@ -2,6 +2,7 @@ const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const ProgressText = document.getElementById("progressText");
 const scoreText = document.getElementById("score");
+const loader = document.getElementById("loader");
 const progressBarFull = document.getElementById("progressBarFull");
 
 let currentQuestion = {};
@@ -34,6 +35,11 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=medium")
       });
       return formattedQuestion;
     });
+    setTimeout(() => {
+      game.classList.remove("hidden");
+      loader.classList.add("hidden");
+    }, 5000);
+
     startGame();
   });
 console.log(questions);
